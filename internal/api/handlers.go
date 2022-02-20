@@ -19,6 +19,7 @@ func (api *Api) getProxy(writer http.ResponseWriter, req *http.Request) {
 		return
 	}
 	body, err := ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close()
 	if err != nil {
 		fmt.Println("Error during read response from server", err)
 		return
